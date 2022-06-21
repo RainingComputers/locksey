@@ -28,3 +28,12 @@ python -m locksey [-h] action [password]
 | unlock    | Recursively go through the directory and decrypt and rename files matching glob `./**/*.locked.*`                    |
 | setpasswd | Store password for current directory in home folder (`~/.locksey`), base64 encoded so you don't have to provide it again |
 | rmpasswd  | Remove stored password for current directory                                                              |
+
+### Changing password 
+
+For changing the password in you current directory, run
+
+1. `unlock`
+2. `rmpasswd` if needed 
+3. `lock` with new password
+4. `setpasswd` with new password if needed
