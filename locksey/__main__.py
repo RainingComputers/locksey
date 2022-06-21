@@ -130,6 +130,7 @@ def main() -> int:
     except InvalidToken:
         print("Invalid password")
 
+    parser.print_usage()
     return -1
 
 
