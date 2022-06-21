@@ -12,6 +12,8 @@ When you run `locksey lock <password>`, it will recursively find all `.unlocked.
 
 - You can also tell locksey to store the password in you home folder so you don't have to type it again.
 
+- Files are encrypted as described in [this](https://stackoverflow.com/a/55147077/5516481) stackoverflow post.
+
 ## Usage
 
 ```

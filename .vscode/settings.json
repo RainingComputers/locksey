@@ -17,6 +17,7 @@
         "fernet",
         "locksey",
         "rmpasswd",
-        "setpasswd"
+        "setpasswd",
+        "stackoverflow"
     ],
 }
