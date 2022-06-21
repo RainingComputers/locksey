@@ -64,9 +64,9 @@ DESCRIPTION = """
 Personal CLI utility tool to easily encrypt and decrypt files in a directory.
 
 lock
-    Recursively go through the directory encrypt files matching glob ./**/*.unlocked.*
+    Recursively go through the directory encrypt and rename files matching glob ./**/*.unlocked.*
 unlock 
-    Recursively go through the directory and decrypt files matching glob ./**/*.locked.*
+    Recursively go through the directory and decrypt and rename files matching glob ./**/*.locked.*
 setpasswd
     Store password for current directory in home folder, base64 encoded so you don't have to provide it again
 rmpasswd

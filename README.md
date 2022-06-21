@@ -24,7 +24,7 @@ python -m locksey [-h] action [password]
 
 | Name      | Description                                                                                               |
 |-----------|-----------------------------------------------------------------------------------------------------------|
-| lock      | Recursively go through the directory encrypt files matching glob `./**/*.unlocked.*`                      |
-| unlock    | Recursively go through the directory and decrypt files matching glob `./**/*.locked.*`                    |
+| lock      | Recursively go through the directory encrypt and rename files matching glob `./**/*.unlocked.*`                      |
+| unlock    | Recursively go through the directory and decrypt and rename files matching glob `./**/*.locked.*`                    |
 | setpasswd | Store password for current directory in home folder (`~/.locksey`), base64 encoded so you don't have to provide it again |
 | rmpasswd  | Remove stored password for current directory                                                              |
