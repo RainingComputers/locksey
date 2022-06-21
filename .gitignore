@@ -1,0 +1,34 @@
+# python
+__pycache__/
+*.pyc
+
+# pytest
+.pytest_cache/
+
+# virtual environment
+.venv
+
+# pip
+build/
+dist/
+*.egg-info/
+
+# temp folders
+temp/
+zipdata/
+temp.json
+temp.yml
+
+# mypy
+.mypy_cache/
+
+# pylint
+reports/
+
+# misc
+todo.txt
+*sandbox.py
+
+# other
+.env
+.idea/workspace.xml
