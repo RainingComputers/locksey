@@ -24,9 +24,7 @@ def _derive_key(password: bytes, salt: bytes, iterations: int = ITERATIONS) -> b
     return b64e(kdf.derive(password))
 
 
-def encrypt(
-    message: str, password: str, iterations: int = ITERATIONS
-) -> str:
+def encrypt(message: str, password: str, iterations: int = ITERATIONS) -> str:
     salt = secrets.token_bytes(16)
     key = _derive_key(password.encode(), salt, iterations)
     encrypted_bytes = b64e(

@@ -5,7 +5,7 @@ from pathlib import Path
 import os
 import sys
 
-from typing import Callable
+from typing import Callable, Optional
 
 from cryptography.fernet import InvalidToken
 
@@ -39,7 +39,10 @@ def rename_path(file_path: str, from_ext: str, to_ext: str) -> str:
 
 
 def transform_file(
-    password: str | None, from_ext: str, to_ext: str, to_func: Callable[[str, str], str]
+    password: Optional[str],
+    from_ext: str,
+    to_ext: str,
+    to_func: Callable[[str, str], str],
 ) -> None:
     for file_path in glob.glob(f"./**/*.{from_ext}.*", recursive=True):
         from_contents = str_from_file(file_path)
@@ -52,11 +55,11 @@ def transform_file(
         os.rename(file_path, to_path)
 
 
-def lock_files(password: str | None) -> None:
+def lock_files(password: Optional[str]) -> None:
     transform_file(password, "unlocked", "locked", encrypt)
 
 
-def unlock_files(password: str | None) -> None:
+def unlock_files(password: Optional[str]) -> None:
     transform_file(password, "locked", "unlocked", decrypt)
 
 
