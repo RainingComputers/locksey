@@ -18,7 +18,7 @@ When you run `locksey lock <password>`, it will recursively find all `.unlocked.
 python -m locksey [-h] action [password]
 ```
 
-### Actions
+*Actions*
 
 | Name      | Description                                                                                               |
 |-----------|-----------------------------------------------------------------------------------------------------------|
