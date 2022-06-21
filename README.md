@@ -1,4 +1,4 @@
-# locksey
+# 🔒 locksey 🔒
 
 Personal CLI utility tool to easily encrypt and decrypt files in a directory. Can be used to 
 encrypt secrets in a repo, MFA recovery codes, password text files, your journal/diary entries or any text file with personal or confidential information.
