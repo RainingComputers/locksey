@@ -39,10 +39,7 @@ def set_config(config: Dict[str, str]) -> None:
 def is_child_path(child: str, parent: str) -> bool:
     parent_path = os.path.abspath(parent)
     child_path = os.path.abspath(child)
-
-    return os.path.commonpath([parent_path]) == os.path.commonpath(
-        [parent_path, child_path]
-    )
+    return parent_path == os.path.commonpath([parent_path, child_path])
 
 
 def set_password(password: str) -> None:

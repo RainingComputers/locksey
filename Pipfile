@@ -10,6 +10,7 @@ cryptography = "*"
 pylint = "*"
 mypy = "*"
 black = "*"
+radon = "*"
 
 [requires]
 python_version = "3.8"

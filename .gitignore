@@ -33,3 +33,6 @@ todo.txt
 .env
 .idea/workspace.xml
 testing/
+
+# vscode
+*.log
