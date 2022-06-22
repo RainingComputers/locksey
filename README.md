@@ -14,6 +14,14 @@ When you run `locksey lock <password>`, it will recursively find all `.unlocked.
 
 - Files are encrypted as described in [this](https://stackoverflow.com/a/55147077/5516481) stackoverflow post.
 
+## Install
+
+Install using pip, you may need to use `python3 -m pip` or `python -m pip` instead. 
+
+```
+pip install locksey
+```
+
 ## Usage
 
 ```
