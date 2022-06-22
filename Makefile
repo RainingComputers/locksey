@@ -13,6 +13,8 @@ help:
 	@echo "    Print pylint score"
 	@echo "quality"
 	@echo "	   Print code quality report"
+	@echo "build"
+	@echo "    Build wheel and tar"
 	@echo ""
 
 clean:
@@ -31,4 +33,9 @@ lint:
 quality:
 	python3 -m radon mi $(PROJECT_NAME)
 	python3 -m radon cc $(PROJECT_NAME)
+
+build:
+	rm -rf dist/
+	rm -rf $(PROJECT_NAME).egg-info
+	python -m build
 

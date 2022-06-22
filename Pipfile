@@ -11,6 +11,8 @@ pylint = "*"
 mypy = "*"
 black = "*"
 radon = "*"
+build = "*"
+twine = "*"
 
 [requires]
 python_version = "3.8"
