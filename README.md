@@ -16,16 +16,14 @@ When you run `locksey lock <password>`, it will recursively find all `.unlocked.
 
 ## Install
 
-Install using pip, you may need to use `python3 -m pip` or `python -m pip` instead. 
-
 ```
-pip install locksey
+python3 -m pip install locksey
 ```
 
 ## Usage
 
 ```
-python -m locksey [-h] action [password]
+python3 -m locksey [-h] action [password]
 ```
 
 *Actions*

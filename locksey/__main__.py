@@ -85,7 +85,7 @@ To change password run
 
 def main() -> int:
     parser = argparse.ArgumentParser(
-        prog="python -m locksey",
+        prog="python3 -m locksey",
         description=DESCRIPTION,
         formatter_class=argparse.RawTextHelpFormatter,
     )
