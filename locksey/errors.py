@@ -1,7 +1,3 @@
-class PasswordRequiredError(Exception):
-    pass
-
-
 class PathAlreadyExistsError(Exception):
     pass
 

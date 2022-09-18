@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as f:
 
 setuptools.setup(
     name="locksey",
-    version="0.0.1",
+    version="0.1.0",
     author="RainingComputers",
     author_email="vishnu.vish.shankar@gmail.com",
     description="Personal CLI utility tool to easily encrypt and decrypt files in a directory.",

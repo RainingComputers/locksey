@@ -4,8 +4,9 @@ import glob
 from pathlib import Path
 import os
 import sys
+from getpass import getpass
 
-from typing import Callable, Optional
+from typing import Callable
 
 from cryptography.fernet import InvalidToken
 
@@ -14,7 +15,6 @@ from locksey.file import str_from_file, dump_str
 from locksey.config import get_password, set_password, rm_password
 from locksey.errors import (
     PasswordDoesNotExistError,
-    PasswordRequiredError,
     PathAlreadyExistsError,
     PasswordAlreadyExistsError,
 )
@@ -39,14 +39,13 @@ def rename_path(file_path: str, from_ext: str, to_ext: str) -> str:
 
 
 def transform_file(
-    password: Optional[str],
+    password: str,
     from_ext: str,
     to_ext: str,
     to_func: Callable[[str, str], str],
 ) -> None:
     for file_path in glob.glob(f"./**/*.{from_ext}.*", recursive=True):
         from_contents = str_from_file(file_path)
-        password = password or get_password()
 
         to_contents = to_func(from_contents, password)
         dump_str(file_path, to_contents)
@@ -55,11 +54,11 @@ def transform_file(
         os.rename(file_path, to_path)
 
 
-def lock_files(password: Optional[str]) -> None:
+def lock_files(password: str) -> None:
     transform_file(password, "unlocked", "locked", encrypt)
 
 
-def unlock_files(password: Optional[str]) -> None:
+def unlock_files(password: str) -> None:
     transform_file(password, "locked", "unlocked", decrypt)
 
 
@@ -94,31 +93,26 @@ def main() -> int:
         "action", type=Action, help="Can be one of lock, unlock, setpasswd, rmpasswd"
     )
 
-    parser.add_argument(
-        "password", nargs="?", help="Password for encrypting/decrypting files"
-    )
-
     args = parser.parse_args()
 
     try:
-        if args.action in [Action.SET_PASSWD] and args.password is None:
-            raise PasswordRequiredError
-
         if args.action == Action.SET_PASSWD:
-            set_password(args.password)
-        elif args.action == Action.LOCK:
-            lock_files(args.password)
-        elif args.action == Action.UNLOCK:
-            unlock_files(args.password)
+            set_password(getpass())
         elif args.action == Action.UNSET_PASSWD:
             rm_password()
+        else:
+            try:
+                password = get_password()
+            except PasswordDoesNotExistError:
+                password = getpass()
+
+            if args.action == Action.LOCK:
+                lock_files(password)
+            elif args.action == Action.UNLOCK:
+                unlock_files(password)
 
         return 0
 
-    except PasswordRequiredError:
-        print("Password is required")
-        if args.action in [Action.LOCK, Action.UNLOCK]:
-            print("You can use setpasswd to avoid typing password again")
     except PathAlreadyExistsError:
         print("The current path or the parent of the current path already exists")
     except PasswordDoesNotExistError:

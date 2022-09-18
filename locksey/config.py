@@ -5,7 +5,6 @@ from typing import Dict
 
 from locksey.errors import (
     PasswordDoesNotExistError,
-    PasswordRequiredError,
     PathAlreadyExistsError,
     PasswordAlreadyExistsError,
 )
@@ -75,4 +74,4 @@ def get_password() -> str:
     try:
         return base64decode(config[CURRENT_PATH])
     except KeyError as error:
-        raise PasswordRequiredError from error
+        raise PasswordDoesNotExistError from error
